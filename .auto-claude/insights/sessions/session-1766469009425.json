@@ -1,0 +1,75 @@
+{
+  "id": "session-1766469009425",
+  "projectId": "763a3673-f60c-41b9-893e-7ac06afb85cb",
+  "title": "is the codebase here",
+  "messages": [
+    {
+      "id": "msg-1766469009426",
+      "role": "user",
+      "content": "is the codebase here",
+      "timestamp": "2025-12-23T05:50:09.426Z"
+    },
+    {
+      "id": "msg-1766469133009",
+      "role": "assistant",
+      "content": "Request timed out. Please try a shorter query.",
+      "timestamp": "2025-12-23T05:52:13.009Z"
+    },
+    {
+      "id": "msg-1766469529308",
+      "role": "user",
+      "content": "test",
+      "timestamp": "2025-12-23T05:58:49.308Z"
+    },
+    {
+      "id": "msg-1766469650785",
+      "role": "assistant",
+      "content": "Request timed out. Please try a shorter query.",
+      "timestamp": "2025-12-23T06:00:50.785Z"
+    },
+    {
+      "id": "msg-1766469678255",
+      "role": "user",
+      "content": "test",
+      "timestamp": "2025-12-23T06:01:18.255Z"
+    },
+    {
+      "id": "msg-1766469746649",
+      "role": "user",
+      "content": "test",
+      "timestamp": "2025-12-23T06:02:26.649Z"
+    },
+    {
+      "id": "msg-1766469750628",
+      "role": "user",
+      "content": "tes",
+      "timestamp": "2025-12-23T06:02:30.628Z"
+    },
+    {
+      "id": "msg-1766469761695",
+      "role": "assistant",
+      "content": "API Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"Invalid bearer token\"},\"request_id\":\"req_011CWP7RyLeu5e3WjoSwYWFu\"} · Please run /login",
+      "timestamp": "2025-12-23T06:02:41.695Z"
+    },
+    {
+      "id": "msg-1766469765006",
+      "role": "assistant",
+      "content": "API Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"Invalid bearer token\"},\"request_id\":\"req_011CWP7SBVQ1Ux5EUenjoNCD\"} · Please run /login",
+      "timestamp": "2025-12-23T06:02:45.006Z"
+    },
+    {
+      "id": "msg-1766470476427",
+      "role": "user",
+      "content": "test",
+      "timestamp": "2025-12-23T06:14:36.427Z"
+    },
+    {
+      "id": "msg-1766470485271",
+      "role": "assistant",
+      "content": "API Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"Invalid bearer token\"},\"request_id\":\"req_011CWP8MDuymRx7o6tmGg9EZ\"} · Please run /login",
+      "timestamp": "2025-12-23T06:14:45.271Z"
+    }
+  ],
+  "createdAt": "2025-12-23T05:50:09.425Z",
+  "updatedAt": "2025-12-23T06:14:45.271Z"
+}
