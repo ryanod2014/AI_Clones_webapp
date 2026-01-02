@@ -97,15 +97,18 @@ const cleanupTempFiles = () => {
 // Run cleanup every 30 minutes
 setInterval(cleanupTempFiles, 30 * 60 * 1000);
 
+// Default reference image URL (hosted on catbox after initial generation)
+const DEFAULT_REFERENCE_URL = 'https://files.catbox.moe/vc80ln.png';
+
 /**
  * POST /api/scene/generate
  * Generate a new scene image using Kie.ai NanoBanana or mock
  */
 router.post('/generate', upload.single('referenceImage'), async (req, res, next) => {
   try {
-    const { prompt, orientation = 'vertical' } = req.body;
+    const { prompt, orientation = 'vertical', useDefaultReference } = req.body;
     const kieApiKey = req.headers['x-kie-api-key'] || req.body.kieApiKey;
-    
+
     // Validation
     if (!prompt || prompt.trim().length === 0) {
       return res.status(400).json({
@@ -115,7 +118,7 @@ router.post('/generate', upload.single('referenceImage'), async (req, res, next)
         }
       });
     }
-    
+
     if (!['vertical', 'horizontal'].includes(orientation)) {
       return res.status(400).json({
         error: {
@@ -124,9 +127,9 @@ router.post('/generate', upload.single('referenceImage'), async (req, res, next)
         }
       });
     }
-    
+
     let result;
-    
+
     // Use real API if key is provided, otherwise fall back to mock
     if (!kieApiKey) {
       // Use mock data when no API key
@@ -135,19 +138,26 @@ router.post('/generate', upload.single('referenceImage'), async (req, res, next)
     } else {
       // Use real Kie.ai API
       console.log('[Scene] Using Kie.ai API');
-      
-      // Reference image is optional - if not provided, we'll do text-to-image
+
+      // Reference image handling
       const hasReferenceImage = !!req.file;
+      const usingDefault = useDefaultReference === 'true' || useDefaultReference === true;
       console.log('[Scene] Reference image:', hasReferenceImage ? 'provided' : 'not provided');
-      
-      // If reference image provided, upload to get public URL
+      console.log('[Scene] Using default reference:', usingDefault);
+
+      // Determine reference image URL
       let referenceImageUrl = null;
-      if (hasReferenceImage) {
-        console.log('[Scene] Uploading reference image to get public URL...');
-        
+
+      if (usingDefault && !hasReferenceImage) {
+        // Use the default reference image URL
+        referenceImageUrl = DEFAULT_REFERENCE_URL;
+        console.log('[Scene] Using default reference image:', referenceImageUrl);
+      } else if (hasReferenceImage) {
+        console.log('[Scene] Uploading custom reference image to get public URL...');
+
         // Upload to public hosting service
         referenceImageUrl = await uploadToPublicHost(req.file.buffer, req.file.mimetype);
-        
+
         if (referenceImageUrl) {
           console.log('[Scene] Reference image uploaded successfully:', referenceImageUrl);
         } else {

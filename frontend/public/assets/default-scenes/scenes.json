@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-01-01T22:14:44.307Z",
+  "referenceImage": "/assets/default-reference.png",
+  "totalScenes": 20,
+  "scenes": [
+    {
+      "id": "default-studio-1",
+      "name": "Modern Interview Studio",
+      "category": "studio",
+      "filename": "default-studio-1.png",
+      "localPath": "/assets/default-scenes/default-studio-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305374143_er8v31_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-2",
+      "name": "Scandinavian Creative",
+      "category": "studio",
+      "filename": "default-studio-2.png",
+      "localPath": "/assets/default-scenes/default-studio-2.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305390087_mpdgwh_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-3",
+      "name": "Industrial Loft",
+      "category": "studio",
+      "filename": "default-studio-3.png",
+      "localPath": "/assets/default-scenes/default-studio-3.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305407842_kqx2w9_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-4",
+      "name": "Futuristic Broadcast",
+      "category": "studio",
+      "filename": "default-studio-4.png",
+      "localPath": "/assets/default-scenes/default-studio-4.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305425332_3irocs_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-5",
+      "name": "Vintage Scholar Study",
+      "category": "studio",
+      "filename": "default-studio-5.png",
+      "localPath": "/assets/default-scenes/default-studio-5.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305442476_i04enn_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-6",
+      "name": "Modern Art Gallery",
+      "category": "studio",
+      "filename": "default-studio-6.png",
+      "localPath": "/assets/default-scenes/default-studio-6.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305456266_122toi_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-7",
+      "name": "Cozy Podcast Studio",
+      "category": "studio",
+      "filename": "default-studio-7.png",
+      "localPath": "/assets/default-scenes/default-studio-7.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305471067_66f7v6_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-studio-8",
+      "name": "Executive Broadcast",
+      "category": "studio",
+      "filename": "default-studio-8.png",
+      "localPath": "/assets/default-scenes/default-studio-8.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305487170_1cj63r_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-office-1",
+      "name": "Penthouse Sunset Office",
+      "category": "office",
+      "filename": "default-office-1.png",
+      "localPath": "/assets/default-scenes/default-office-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305505445_axdswu_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-office-2",
+      "name": "Glass Boardroom",
+      "category": "office",
+      "filename": "default-office-2.png",
+      "localPath": "/assets/default-scenes/default-office-2.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305521973_qn7iw4_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-office-3",
+      "name": "Executive Library",
+      "category": "office",
+      "filename": "default-office-3.png",
+      "localPath": "/assets/default-scenes/default-office-3.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305537543_tx3avi_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-office-4",
+      "name": "Startup Loft",
+      "category": "office",
+      "filename": "default-office-4.png",
+      "localPath": "/assets/default-scenes/default-office-4.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305554257_ddrc6d_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-office-5",
+      "name": "Minimalist Japanese",
+      "category": "office",
+      "filename": "default-office-5.png",
+      "localPath": "/assets/default-scenes/default-office-5.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305568914_zcrc2c_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-beach-1",
+      "name": "Sunrise Beach Deck",
+      "category": "beach",
+      "filename": "default-beach-1.png",
+      "localPath": "/assets/default-scenes/default-beach-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305586186_nzreex_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-beach-2",
+      "name": "Ocean Cliff Office",
+      "category": "beach",
+      "filename": "default-beach-2.png",
+      "localPath": "/assets/default-scenes/default-beach-2.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305601395_f6o1q0_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-city-1",
+      "name": "Rooftop Night",
+      "category": "city",
+      "filename": "default-city-1.png",
+      "localPath": "/assets/default-scenes/default-city-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305617767_ud59r6_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-city-2",
+      "name": "Penthouse City View",
+      "category": "city",
+      "filename": "default-city-2.png",
+      "localPath": "/assets/default-scenes/default-city-2.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305633341_3imog7_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-nature-1",
+      "name": "Forest Clearing",
+      "category": "nature",
+      "filename": "default-nature-1.png",
+      "localPath": "/assets/default-scenes/default-nature-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305648080_ifmpsr_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-luxury-1",
+      "name": "Private Jet Cabin",
+      "category": "luxury",
+      "filename": "default-luxury-1.png",
+      "localPath": "/assets/default-scenes/default-luxury-1.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305662731_mxbc18_9x16_576x1024.png",
+      "orientation": "vertical"
+    },
+    {
+      "id": "default-luxury-2",
+      "name": "Luxury Hotel Suite",
+      "category": "luxury",
+      "filename": "default-luxury-2.png",
+      "localPath": "/assets/default-scenes/default-luxury-2.png",
+      "originalUrl": "https://tempfile.aiquickdraw.com/workers/nano/image_1767305677942_ttzg8x_9x16_576x1024.png",
+      "orientation": "vertical"
+    }
+  ]
+}

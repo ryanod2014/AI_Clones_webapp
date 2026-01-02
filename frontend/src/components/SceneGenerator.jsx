@@ -6,14 +6,16 @@ import { generateScene } from '../utils/api';
 import { saveScene, saveReferenceImage, getReferenceImage, deleteReferenceImage } from '../utils/db';
 import useAppStore from '../stores/useAppStore';
 import PROMPT_CATEGORIES, { getPromptById } from '../data/scenePrompts';
+import { DEFAULT_REFERENCE_IMAGE } from '../data/defaultScenes';
 
 function SceneGenerator({ onSceneGenerated }) {
   const { apiKeys, isGeneratingScene, setIsGeneratingScene } = useAppStore();
-  
+
   const [referenceImage, setReferenceImage] = useState(null);
   const [referencePreview, setReferencePreview] = useState(null);
   const [referenceFileName, setReferenceFileName] = useState(null);
   const [isLoadingReference, setIsLoadingReference] = useState(true);
+  const [useDefaultReference, setUseDefaultReference] = useState(true);
   const [prompt, setPrompt] = useState('');
   const [selectedPromptId, setSelectedPromptId] = useState('');
   const [orientation, setOrientation] = useState('vertical');
@@ -36,14 +38,19 @@ function SceneGenerator({ onSceneGenerated }) {
       try {
         const saved = await getReferenceImage();
         if (saved && saved.blob) {
-          // Create a File object from the blob
+          // User has a custom reference image saved - use it
           const file = new File([saved.blob], saved.fileName, { type: saved.blob.type });
           setReferenceImage(file);
           setReferencePreview(URL.createObjectURL(saved.blob));
           setReferenceFileName(saved.fileName);
+          setUseDefaultReference(false);
+        } else {
+          // No custom image - use default
+          setUseDefaultReference(true);
         }
       } catch (error) {
         console.error('Failed to load saved reference image:', error);
+        setUseDefaultReference(true);
       } finally {
         setIsLoadingReference(false);
       }
@@ -57,11 +64,12 @@ function SceneGenerator({ onSceneGenerated }) {
       setReferenceImage(file);
       setReferencePreview(URL.createObjectURL(file));
       setReferenceFileName(file.name);
-      
+      setUseDefaultReference(false);
+
       // Save to IndexedDB for persistence
       try {
         await saveReferenceImage(file, file.name);
-        toast.success('Reference image saved');
+        toast.success('Custom reference image saved');
       } catch (error) {
         console.error('Failed to save reference image:', error);
       }
@@ -89,8 +97,10 @@ function SceneGenerator({ onSceneGenerated }) {
 
     try {
       console.log('[SceneGenerator] Calling API with prompt:', prompt.trim().substring(0, 50) + '...');
+      console.log('[SceneGenerator] Using default reference:', useDefaultReference);
       const result = await generateScene({
-        referenceImage,
+        referenceImage: useDefaultReference ? null : referenceImage,
+        useDefaultReference,
         prompt: prompt.trim(),
         orientation,
         kieApiKey: apiKeys.kieApiKey
@@ -157,10 +167,12 @@ function SceneGenerator({ onSceneGenerated }) {
     setReferenceImage(null);
     setReferencePreview(null);
     setReferenceFileName(null);
-    
+    setUseDefaultReference(true);
+
     // Remove from IndexedDB
     try {
       await deleteReferenceImage();
+      toast.success('Switched to default reference image');
     } catch (error) {
       console.error('Failed to delete reference image:', error);
     }
@@ -212,12 +224,45 @@ function SceneGenerator({ onSceneGenerated }) {
       {/* Reference Image Upload */}
       <div>
         <label className="block text-sm font-medium text-text-secondary mb-3">
-          Reference Image {referencePreview && <span className="text-mint">(Saved)</span>}
+          Reference Image
+          {useDefaultReference && <span className="text-mint ml-2">(Using Default)</span>}
+          {!useDefaultReference && referencePreview && <span className="text-electric ml-2">(Custom)</span>}
         </label>
         {isLoadingReference ? (
           <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center">
             <div className="spinner mx-auto mb-3"></div>
             <p className="text-text-muted text-sm">Loading saved reference...</p>
+          </div>
+        ) : useDefaultReference ? (
+          /* Default Reference Image */
+          <div className="flex items-start gap-4">
+            <div className="relative">
+              <img
+                src={DEFAULT_REFERENCE_IMAGE}
+                alt="Default Reference"
+                className="max-h-48 rounded-lg border-2 border-mint/30"
+              />
+              <div className="absolute top-2 left-2 px-2 py-1 bg-mint/90 text-void text-xs font-medium rounded">
+                Default
+              </div>
+            </div>
+            <div className="flex-1">
+              <p className="text-sm text-text-primary font-medium mb-1">
+                Default Reference Image
+              </p>
+              <p className="text-xs text-text-muted mb-3">
+                Using the default reference image. Upload your own to customize the avatar.
+              </p>
+              <div
+                {...getRootProps()}
+                className="inline-block"
+              >
+                <input {...getInputProps()} />
+                <button className="text-sm text-electric hover:text-electric-dim transition-colors">
+                  Upload custom image
+                </button>
+              </div>
+            </div>
           </div>
         ) : !referencePreview ? (
           <div
@@ -245,12 +290,15 @@ function SceneGenerator({ onSceneGenerated }) {
               <img
                 src={referencePreview}
                 alt="Reference"
-                className="max-h-48 rounded-lg"
+                className="max-h-48 rounded-lg border-2 border-electric/30"
               />
+              <div className="absolute top-2 left-2 px-2 py-1 bg-electric/90 text-void text-xs font-medium rounded">
+                Custom
+              </div>
               <button
                 onClick={clearReferenceImage}
                 className="absolute -top-2 -right-2 p-1.5 bg-coral rounded-full text-void hover:bg-coral-dim transition-colors"
-                title="Remove reference image"
+                title="Remove and use default"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -259,10 +307,10 @@ function SceneGenerator({ onSceneGenerated }) {
             </div>
             <div className="flex-1">
               <p className="text-sm text-text-primary font-medium mb-1">
-                {referenceFileName || 'Reference Image'}
+                {referenceFileName || 'Custom Reference Image'}
               </p>
               <p className="text-xs text-text-muted mb-3">
-                This image will be used as a reference for generating your avatar scene.
+                Using your custom reference image. Remove it to switch back to default.
               </p>
               <div
                 {...getRootProps()}
